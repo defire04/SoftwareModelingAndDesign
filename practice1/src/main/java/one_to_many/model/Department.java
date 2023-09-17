@@ -1,9 +1,11 @@
-package one_to_one.model;
+package one_to_many.model;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -11,7 +13,5 @@ import lombok.NoArgsConstructor;
 public class Department {
     private int id;
     private String name;
-    private GeneralInformationOnActivity info;
-
-
+    private List<Employee> employees;
 }

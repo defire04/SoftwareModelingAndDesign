@@ -1,4 +1,4 @@
-package one.to.one.model;
+package one_to_one.model;
 
 
 import lombok.AllArgsConstructor;
@@ -12,6 +12,4 @@ public class Department {
     private int id;
     private String name;
     private GeneralInformationOnActivity info;
-
-
 }

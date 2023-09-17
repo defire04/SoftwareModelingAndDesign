@@ -1,4 +1,4 @@
-package one_to_many.model;
+package many_to_many.model;
 
 
 import lombok.AllArgsConstructor;
@@ -8,12 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Department {
     private int id;
     private String name;
-    private List<Employee> employees;
-
-
 }

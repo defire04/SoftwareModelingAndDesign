@@ -6,7 +6,7 @@ import one_to_many.model.Employee;
 
 import java.util.List;
 
-public class Main {
+public class OneToMany {
     public static void main(String[] args) {
         Employee employee1 = new Employee(1, "John");
         Employee employee2 = new Employee(2, "Alice");

@@ -1,4 +1,4 @@
-package one.to.one.model;
+package one_to_one.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

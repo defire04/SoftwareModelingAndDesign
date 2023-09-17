@@ -5,7 +5,7 @@ import one_to_one.model.GeneralInformationOnActivity;
 
 import java.util.List;
 
-public class Main {
+public class OneToOne {
     public static void main(String[] args) {
         GeneralInformationOnActivity info1 = new GeneralInformationOnActivity(1, "Info1");
         GeneralInformationOnActivity info2 = new GeneralInformationOnActivity(2, "Info2");

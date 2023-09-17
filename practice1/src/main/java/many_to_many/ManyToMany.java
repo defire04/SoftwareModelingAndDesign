@@ -1,40 +1,48 @@
-package one_to_many;
+package many_to_many;
 
 
-import one_to_many.model.Department;
-import one_to_many.model.Employee;
+import many_to_many.model.Department;
+import many_to_many.model.DepartmentTask;
+import many_to_many.model.Task;
 
 import java.util.List;
 
-public class OneToMany {
+public class ManyToMany {
     public static void main(String[] args) {
-        Employee employee1 = new Employee(1, "John");
-        Employee employee2 = new Employee(2, "Alice");
-        Employee employee3 = new Employee(3, "Bob");
-        Employee employee4 = new Employee(4, "Mark");
-        Employee employee5 = new Employee(5, "Bob2");
-        Employee employee6 = new Employee(6, "Roy");
 
-        List<Employee> employees = List.of(
-                employee1, employee2,
-                employee3, employee4,
-                employee5, employee6
+
+        List<Task> tasks = List.of(
+                new Task(1, "Recruit new employees"),
+                new Task(2, "Software development"),
+                new Task(3, "Training and development")
         );
 
-        List<Department> departmentList = List.of(
-                new Department(1, "department1", List.of(employee1, employee2)),
-                new Department(2, "department2", List.of(employee3, employee6)),
-                new Department(3, "department3", List.of(employee4, employee5))
+        List<Department> departments = List.of(
+                new Department(1, "department1"),
+                new Department(2, "department2"),
+                new Department(3, "department3")
         );
 
 
-        employees.forEach(employee -> {
-            System.out.println(employee);
-            departmentList.forEach(department -> {
-                if (department.getEmployees().stream().anyMatch(emp -> emp.getId() == employee.getId())) {
-                    System.out.println("\t" + department);
-                }
+        List<DepartmentTask> manyToManyList = List.of(
+                new DepartmentTask(departments.get(0), tasks.get(2)),
+                new DepartmentTask(departments.get(0), tasks.get(1)),
+                new DepartmentTask(departments.get(1), tasks.get(2)),
+                new DepartmentTask(departments.get(2), tasks.get(0))
+        );
+
+
+        tasks.forEach(task -> {
+            departments.forEach(department -> {
+                manyToManyList.forEach(departmentTask -> {
+                    if (departmentTask.getDepartment().getId() == department.getId() && departmentTask.getTask().getId() == task.getId()) {
+                        System.out.println(departmentTask);
+                        System.out.println("\t" + department);
+                        System.out.println("\t" + task);
+                    }
+                });
             });
         });
+
     }
 }
