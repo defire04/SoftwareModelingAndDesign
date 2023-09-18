@@ -23,5 +23,4 @@ public class BaseRepository<E extends BaseEntity> {
         return list.stream().filter(entity -> entity.getId() == id).findFirst();
     }
 
-
 }

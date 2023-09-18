@@ -26,7 +26,6 @@ public class Main {
                 barcodeForSprite
         ));
 
-
         Product productWater = new Product(1, "Water");
         Product productBread = new Product(2, "Bread");
         Product productSprite = new Product(3, "Sprite");
@@ -49,8 +48,8 @@ public class Main {
         ));
 
         Customer customerBob = new Customer(1, "Bob");
-        Customer customerMark = new Customer(1, "Mark");
-        Customer customerAnna = new Customer(1, "Anna");
+        Customer customerMark = new Customer(2, "Mark");
+        Customer customerAnna = new Customer(3, "Anna");
 
         CustomerService customerService = new CustomerService(new BaseRepository<>());
         customerService.addItemsToDb(List.of(
@@ -58,6 +57,55 @@ public class Main {
                 customerMark,
                 customerAnna
         ));
+
+        // One to one for water
+        barcodeForWater.setProduct(productWater);
+        productWater.setBarcode(barcodeForWater);
+
+        // One to many for water
+        productWater.setCategory(categoryDrink);
+        categoryDrink.getProducts().add(productWater);
+
+        // Many to many
+        productWater.getCustomers().add(customerBob);
+        productWater.getCustomers().add(customerAnna);
+        customerBob.getProducts().add(productWater);
+        customerAnna.getProducts().add(productWater);
+
+
+        // One to one for bread
+        productBread.setBarcode(barcodeForBread);
+        barcodeForBread.setProduct(productBread);
+
+        // One to many for bread
+        productBread.setCategory(categoryBakery);
+        categoryBakery.getProducts().add(productBread);
+
+        // Many to many for bread
+        productBread.getCustomers().add(customerMark);
+        customerMark.getProducts().add(productBread);
+
+
+        // One to one for sprite
+        barcodeForSprite.setProduct(productSprite);
+        productSprite.setBarcode(barcodeForSprite);
+
+        // One to many for sprite
+        productSprite.setCategory(categoryDrink);
+        categoryDrink.getProducts().add(productSprite);
+
+        // Many to many for sprite
+        productSprite.getCustomers().add(customerBob);
+        productSprite.getCustomers().add(customerMark);
+        customerBob.getProducts().add(productSprite);
+        customerMark.getProducts().add(productSprite);
+
+
+        productService.showInfoById(productWater.getId());
+        productService.showInfo(productBread);
+        productService.showInfoById(productSprite.getId());
+
+
 
 
     }

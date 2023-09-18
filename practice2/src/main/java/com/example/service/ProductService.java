@@ -8,21 +8,31 @@ import java.util.List;
 public class ProductService {
     private final BaseRepository<Product> productBaseRepository;
 
-    public ProductService(BaseRepository< Product>  ProductBaseRepository) {
-        this.productBaseRepository =  ProductBaseRepository;
+    public ProductService(BaseRepository<Product> ProductBaseRepository) {
+        this.productBaseRepository = ProductBaseRepository;
     }
 
-    public void addItemToDb( Product  Product) {
-        productBaseRepository.addItemToDb( Product);
-    }
-
-
-    public void addItemsToDb(List< Product> ProductList) {
-        productBaseRepository.addItemsToDb( ProductList);
+    public void addItemToDb(Product Product) {
+        productBaseRepository.addItemToDb(Product);
     }
 
 
-    public  Product getById(int id){
-        return  productBaseRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found!"));
+    public void addItemsToDb(List<Product> ProductList) {
+        productBaseRepository.addItemsToDb(ProductList);
+    }
+
+
+    public Product getById(int id) {
+        return productBaseRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found!"));
+    }
+
+
+    public void showInfoById(int id) {
+        Product product = getById(id);
+        System.out.println(product);
+    }
+
+    public void showInfo(Product productBread) {
+        System.out.println(productBread);
     }
 }
