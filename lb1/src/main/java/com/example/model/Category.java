@@ -16,7 +16,6 @@ public class Category extends BaseEntity{
         super(id);
         this.name = name;
     }
-
     @Override
     public String toString() {
         return "Category{" +

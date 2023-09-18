@@ -11,12 +11,10 @@ import java.util.List;
 public class Customer extends BaseEntity {
     private String name;
     private List<Product> products = new ArrayList<>();
-
     public Customer(int id, String name) {
         super(id);
         this.name = name;
     }
-
     @Override
     public String toString() {
         return "Customer{" +
